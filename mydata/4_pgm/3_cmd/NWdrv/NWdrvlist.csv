@@ -1,0 +1,6 @@
+#,#Network Folder Path,#Drive Letter,#User Name,#Domain Name
+net,/delete,s,,
+net,/delete,t:\,,
+#net,\\10.123.1.89\Work,/delete,,
+net,\\filesvr.domain.co.jp\ITCG\PJ1,S:,,
+net,\\10.123.1.89\Work,T:\,operator,

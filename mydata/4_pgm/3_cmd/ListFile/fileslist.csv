@@ -1,0 +1,6 @@
+#Listing Option,#Search Drive Name / Command,#Search Drive Letter,#Search Path,#Save Drive Letter,#Save Path
+path,ˆÄŒSV,S:,ˆÄŒ1,P:,3_lib\5_file\
+attr,ˆÄŒSV,S:,ˆÄŒ1,P:,3_lib\5_file\
+cmd,ping -n 12 127.0.0.1,notexist.txt,,,
+cmd,ping -n 12 127.0.0.1,exist.txt,,,
+#cmd,shutdown -l,,,,

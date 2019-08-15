@@ -1,0 +1,4 @@
+#Mode Option,#Search Directory,#Search File,#Grep Option,#Charcter Encoding,#Find Keyword,#Output File / Replace Keyword
+view,C:\Users\user\Downloads,*.*,RPW2,8,20[01][0123456789],
+replace,\\10.123.45.89\Work\test,*.txt,SRP3FG,2,Yesterday$,Today
+out,D:\file,*Path*Server*,RPU,0,^(?!.*(old|copy)).*$,foundfile
