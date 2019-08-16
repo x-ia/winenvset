@@ -7,7 +7,7 @@ $dirPathScript = Split-Path $MyInvocation.MyCommand.Path -Parent
 "#         to show the location         #"
 "#                 of the mouse pointer #"
 "#                                      #"
-"#   1st release: 2019-08-09            #"
+"#   1st release: 2019-08-10            #"
 "#   Last update: 2019-08-09            #"
 "#   Author: Y. Kosaka                  #"
 "#   See the web for more information   #"
@@ -19,7 +19,7 @@ if ((Get-ItemProperty -Path "HKCU:\Control Panel\Desktop" `
   control -name Microsoft.Mouse
   sleep -Milliseconds 100
   Send-Keys "+{TAB}" -ProcessName "RunDLL32" -Wait 50
-  Send-Keys "$("{LEFT}" * 5)" -ProcessName "RunDLL32" -Wait 50
+  Send-Keys "$("{LEFT}" * 6)" -ProcessName "RunDLL32" -Wait 50
   Send-Keys "$("{RIGHT}" * 2)" -ProcessName "RunDLL32" -Wait 50
   Send-Keys "%s" -ProcessName "RunDLL32" -Wait 50
   Send-Keys "{Enter}" -ProcessName "RunDLL32" -Wait 50
