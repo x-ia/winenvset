@@ -7,7 +7,7 @@ $Host.UI.RawUI.ForeGroundColor = "Green"
 "#                        by PowerShell #"
 "#                                      #"
 "#   1st release: 2019-07-30            #"
-"#   Last update: 2019-08-09            #"
+"#   Last update: 2019-08-19            #"
 "#   Author: Y. Kosaka                  #"
 "#   See the web for more information   #"
 "#   https://qiita.com/x-ia             #"
@@ -45,7 +45,7 @@ if (-Not (Test-Path $pathFileList)) {
 
 $pathDirList = Split-Path $pathFileList -Parent
 $arrList = Get-Content $pathFileList | `
-ConvertFrom-CSV -header keyOpt,keyLabelSearch,keyDrvSearch,keyPathSearch,keyDrvOut,keyPathOut -Delimiter ","
+  ConvertFrom-CSV -header keyOpt,keyLabelSearch,keyDrvSearch,keyPathSearch,keyDrvOut,keyPathOut -Delimiter ","
 $pathFileLock = $pathFileList + $extLock
 (Get-Date).ToString("yyyy-MM-dd HH:mm:ss.fff") | `
   Out-File $pathFileLock -Encoding Default -Append
@@ -55,7 +55,7 @@ $pathFileLog = $dirPathScript + "\" + $nameFileScript + `
 $pathFileErr = $dirPathScript + "\" + $nameErr + `
   "-" + $(Get-ChildItem $pathFileList).BaseName + $extLog
 
-for ($i=0; $i -lt $arrList.Length; $i++){
+for ($i=0; $i -lt $arrList.Length; $i++) {
   $error.clear()
   $dateNow = (Get-Date).ToString("yyyyMMdd")
   $timeNow = (Get-Date).ToString("HHmmss")
@@ -171,6 +171,8 @@ for ($i=0; $i -lt $arrList.Length; $i++){
   if (-Not (Test-Path $pathFileLock)) {
     $i = 0
     Write-Host "Batch list has reset."
+    (Get-Date).ToString("yyyy-MM-dd HH:mm:ss.fff") | `
+      Out-File $pathFileLock -Encoding Default -Append
   }
 }
 

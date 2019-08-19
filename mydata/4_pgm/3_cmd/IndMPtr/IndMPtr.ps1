@@ -8,7 +8,7 @@ $dirPathScript = Split-Path $MyInvocation.MyCommand.Path -Parent
 "#                 of the mouse pointer #"
 "#                                      #"
 "#   1st release: 2019-08-10            #"
-"#   Last update: 2019-08-09            #"
+"#   Last update: 2019-08-19            #"
 "#   Author: Y. Kosaka                  #"
 "#   See the web for more information   #"
 "#   https://qiita.com/x-ia             #"
@@ -17,7 +17,7 @@ $dirPathScript = Split-Path $MyInvocation.MyCommand.Path -Parent
 if ((Get-ItemProperty -Path "HKCU:\Control Panel\Desktop" `
   -Name UserPreferencesMask).UserPreferencesMask[1] -lt 64) {
   control -name Microsoft.Mouse
-  sleep -Milliseconds 100
+  sleep -Milliseconds 200
   Send-Keys "+{TAB}" -ProcessName "RunDLL32" -Wait 50
   Send-Keys "$("{LEFT}" * 6)" -ProcessName "RunDLL32" -Wait 50
   Send-Keys "$("{RIGHT}" * 2)" -ProcessName "RunDLL32" -Wait 50
@@ -27,4 +27,9 @@ if ((Get-ItemProperty -Path "HKCU:\Control Panel\Desktop" `
 } else {
   Write-Host "`r`nNo need to change the settings."
 }
-sleep -Milliseconds 1500
+
+Start-Sleep -Milliseconds 200
+for ($i=0; $i -lt 3; $i++) {
+  Send-Keys "^" -Wait 50
+}
+Start-Sleep -Milliseconds 1000
