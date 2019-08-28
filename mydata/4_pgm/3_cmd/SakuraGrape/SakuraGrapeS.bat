@@ -4,7 +4,8 @@ COLOR 0A
 REM ########### SakuraGrapeS.bat ###########
 REM # Grep with Sakura Editor core process #
 REM #                                      #
-REM #   Last update: 2019-05-21            #
+REM #   1st release: 2019-05-20            #
+REM #   Last update: 2019-08-25            #
 REM #   Author: Y. Kosaka                  #
 REM #   See the web for more information   #
 REM #   https://qiita.com/x-ia             #
@@ -26,10 +27,11 @@ SET tKey=%6
 SET tKey=%tKey:^^^^=^%
 REM SET tKey=%tKey:?=^?%
 SET tOut=%7
+SET tOut=%tOut:^^^^=^%
+SET extLog=.log
 SET optGrep=%1
 
 SET dScr=%~dp0
-SET tScr=%~n0
 
 REM SET dateNow=%date:~0,4%%date:~5,2%%date:~8,2%
 REM SET timeNow=%time:~0,2%%time:~3,2%
@@ -50,7 +52,7 @@ IF ERRORLEVEL 1 (
 
 ECHO %optGrep% | FIND /I "r" >NUL
 IF NOT ERRORLEVEL 1 (
-  "%aSakura%" -GREPMODE -GFOLDER=%dGrep% -GOPT=%tOpt% -GFILE=%fGrep% -GCODE=%nCode% -GKEY=%tKey% -GREPR=%tOut%
+  "%aSakura%" -GREPMODE -GFOLDER=%dGrep% -GOPT=%tOpt% -GFILE=%fGrep% -GCODE=%nCode% -GKEY=%tKey% -GREPR=%tOut%>>"%dScr%%tScr%-%optGrep%%extLog%"
 ) ELSE (
   ECHO %optGrep% | FIND /I "v" >NUL
   IF NOT ERRORLEVEL 1 (

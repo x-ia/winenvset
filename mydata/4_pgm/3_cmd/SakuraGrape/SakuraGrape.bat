@@ -7,7 +7,7 @@ ECHO # Grep with Sakura Editor              #
 ECHO #                      iteration batch #
 ECHO #                                      #
 ECHO #   1st release: 2019-05-20            #
-ECHO #   Last update: 2019-07-13            #
+ECHO #   Last update: 2019-08-25            #
 ECHO #   Author: Y. Kosaka                  #
 ECHO #   See the web for more information   #
 ECHO #   https://qiita.com/x-ia             #
@@ -66,7 +66,7 @@ FOR /F "usebackq skip=1 tokens=1-7 delims=," %%a IN ("%fList:"=%%extLock%") DO (
 )
 
 DEL "%fList:"=%%extLock%"
-PAUSE
+TIMEOUT /T 1
 REM ENDLOCAL
 EXIT /B
 
