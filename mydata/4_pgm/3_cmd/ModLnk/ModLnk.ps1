@@ -1,10 +1,11 @@
+#Set-PSDebug -Trace 1
 $Host.UI.RawUI.ForeGroundColor = "Green"
 
 "############## ModLnk.ps1 ##############"
 "# Replace the target of shortcuts      #"
 "#                                      #"
 "#   1st release: 2019-07-24            #"
-"#   Last update: 2019-07-25            #"
+"#   Last update: 2019-10-26            #"
 "#   Author: Y. Kosaka                  #"
 "#   See the web for more information   #"
 "#   https://qiita.com/x-ia             #"
@@ -87,6 +88,8 @@ do {
       break
     }
 
+    $flagChg = 1
+
     $pathBak = $pathFile + $extBak
     Copy-Item $pathFile $pathBak  ## Get the lnk we want to use as a template
     $objSh = New-Object -ComObject WScript.Shell
@@ -112,41 +115,60 @@ do {
 
     if ($flagOpt % $arrFlag[0] -eq 0) {
       if ($flagOpt % $arrFlag[3] -eq 0) {
-      Write-Host "$strSearch, $strReplace"
-        $objLnk.TargetPath = $pathTarget -ireplace $strSearch, $strReplace  ## Make changes
+        Write-Host "$strSearch, $strReplace"
+        $tmp = $pathTarget -ireplace $strSearch, $strReplace
       } else {
-        $objLnk.TargetPath = $pathTarget -ireplace [regex]::escape($strSearch), [regex]::escape($strReplace)  ## Make changes
+        $tmp = $pathTarget -ireplace [regex]::escape($strSearch), $strReplace        
       }
-      $strLog += $pathTarget
+      if ($tmp -ne $pathTarget) {
+        $flagChg *= $arrFlag[0]
+        $objLnk.TargetPath = $tmp  ## Make changes
+        $strLog += $pathTarget
+      }
     }
 
     if ($flagOpt % $arrFlag[1] -eq 0) {
       if ($flagOpt % $arrFlag[3] -eq 0) {
-        $objLnk.Arguments = $strArgs -ireplace $strSearch, $strReplace  ## Make changes
+        $tmp =  $strArgs -ireplace $strSearch, $strReplace
       } else {
-        $objLnk.Arguments = $strArgs -ireplace [regex]::escape($strSearch), [regex]::escape($strReplace)  ## Make changes
+        $tmp = $strArgs -ireplace [regex]::escape($strSearch), $strReplace
       }
-      $objLnk.Arguments = $strArgs -ireplace [regex]::escape($strSearch), $strReplace  ## Make changes
-      $strLog += "`t" + $strArgs
+      if ($tmp -ne $strArgs) {
+        $flagChg *= $arrFlag[1]
+        $objLnk.Arguments = $tmp  ## Make changes
+        $strLog += "`t" + $strArgs
+      } else {
+      $strLog += "`t"
+      }
     } else {
       $strLog += "`t"
     }
 
     if ($flagOpt % $arrFlag[2] -eq 0) {
       if ($flagOpt % $arrFlag[3] -eq 0) {
-        $objLnk.WorkingDirectory = $pathWork -ireplace $strSearch, $strReplace  ## Make changes
+        $tmp = $pathWork -ireplace $strSearch, $strReplace
       } else {
-        $objLnk.WorkingDirectory = $pathWork -ireplace [regex]::escape($strSearch), [regex]::escape($strReplace)  ## Make changes
+        $tmp = $pathWork -ireplace [regex]::escape($strSearch), $strReplace
       }
-      $strLog += "`t" + $pathWork
+      if ($tmp -ne $pathWork) {
+        $flagChg *= $arrFlag[2]
+        $objLnk.WorkingDirectory = $tmp  ## Make changes
+        $strLog += "`t" + $pathWork
+      } else {
+      $strLog += "`t"
+      }
     } else {
       $strLog += "`t"
     }
 
-    $objLnk.Save()  ## Save
+    if ($flagChg -ne 1) {
+      $objLnk.Save()  ## Save
+      Write-Host "Done modifying the target of a shortcut file.`r`n"
+      ++$numOut
+    } else {
+      Write-Host "No required for modifying the shortcut file.`r`n"
+    }
 
-    Write-Host "Done modifying the target of a shortcut file.`r`n"
-    ++$numOut
     break
   }
 

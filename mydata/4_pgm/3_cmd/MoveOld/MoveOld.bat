@@ -7,7 +7,7 @@ ECHO # Move old files by using date         #
 ECHO #                in the filename batch #
 ECHO #                                      #
 ECHO #   1st release: 2019-06-03            #
-ECHO #   Last update: 2019-07-27            #
+ECHO #   Last update: 2019-10-01            #
 ECHO #   Author: Y. Kosaka                  #
 ECHO #   See the web for more information   #
 ECHO #   https://qiita.com/x-ia             #
@@ -38,7 +38,7 @@ IF NOT EXIST %pFolder% (
 
 PUSHD %pFolder%
 
-DIR /A-D-L /B /O-N %pFolder%>%fList%
+DIR /A-D-L /B /OE-N %pFolder%>%fList%
 
 FOR /F "delims=" %%A IN (%fList%) DO (
 SET /A nLineMax+=1

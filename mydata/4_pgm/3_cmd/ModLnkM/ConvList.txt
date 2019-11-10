@@ -1,0 +1,3 @@
+file-server01   file-server02
+mytemp  sharedtemp  3
+<検索文字列>   <置換後文字列>    <オプション>

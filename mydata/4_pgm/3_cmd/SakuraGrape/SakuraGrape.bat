@@ -76,7 +76,7 @@ EXIT /B
     ECHO %date% %time%	%tScr%	Start	%1	%2	%3	%4	%5	%6	%7>>%~dpn0%extLog%
     CALL %~dp0%tScr%S.bat %1 %2 %3 %4 %5 %6 %7
     SET return=%ERRORLEVEL%
-    IF !return! EQU 0 (
+    IF %return% EQU 0 (
       SET return=Finish
     ) ELSE (
       SET return=Error %return%

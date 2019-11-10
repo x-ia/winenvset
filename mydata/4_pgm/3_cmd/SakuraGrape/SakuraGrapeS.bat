@@ -1,4 +1,4 @@
-@ECHO ON
+@ECHO OFF
 COLOR 0A
 
 REM ########### SakuraGrapeS.bat ###########
