@@ -5,7 +5,7 @@ $Host.UI.RawUI.ForeGroundColor = "Green"
  "#                     multiple edition #"
  "#                                      #"
  "#   1st release: 2019-07-24            #
- "#   Rearrange  : 2019-10-26            #"
+ "#   Remodeling : 2019-10-26            #"
  "#   Last update: 2019-11-09            #"
  "#   Author: Y. Kosaka                  #"
  "#   See the web for more information   #"

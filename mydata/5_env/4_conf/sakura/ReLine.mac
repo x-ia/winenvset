@@ -1,0 +1,6 @@
+﻿//Keyboard Macro File
+ReplaceAll('\\r\\n', '\\r\\n\\r\\n<<<<<<<<<<<<<<<<<< <<<<<<<<<<<<<<<<<< >>>>>>>>>>>>>>>>>> >>>>>>>>>>>>>>>>>>\\r\\n\\r\\n', 1052);	// Replace All
+ReplaceAll('^(Z:.*?).toGrep(.\d{6})(.*?)(\(\d+,\d+\): )', '"$1$2$2$3"\\r\\n$4\\r\\n', 1052);	// Replace All
+ReplaceAll('\\^NL\\^', '\\r\\n', 1052);	// Replace All
+ReDraw(0);	// ReDraw
+//FileSaveAs('tome_prev.log');

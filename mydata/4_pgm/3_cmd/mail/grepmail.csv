@@ -1,0 +1,4 @@
+#Mode Option,#Search Directory,#Search File,#Grep Option,#Charcter Encoding,#Find Keyword,#Output File / Replace Keyword
+replace,Z:\mydata\1_doc\4_mail\toGrep,*.txt,RP3FGU,0,^((送信日時|宛先|ＣＣ|件名|添付ファイル):\t),\r\n$1
+replace,Z:\mydata\1_doc\4_mail\toGrep,*.txt,RP3FGU,0,\r\n,\^NL\^
+out,Z:\mydata\1_doc\4_mail\toGrep,*.txt,RP1FGHU,0,宛先:\t.*自分.*?\^NL\^\^NL\^.*(各位|名前1|名前2|名前3)|自分(\)|さん),tome

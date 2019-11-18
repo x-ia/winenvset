@@ -1,0 +1,6 @@
+﻿//Keyboard Macro File
+ReplaceAll('^.+@.+> *.*\r\n', '', 1052);	// Replace All
+ReplaceAll('^ *<?=?>? *\r\n', '', 1052);	// Replace All
+ReDraw(0);	// ReDraw
+FileSave();
+WinClose();
